@@ -1,7 +1,21 @@
-<div class="grid grid-cols-3">
-    <app-product [img]="'https://picsum.photos/250/250'" [title]="'Producto 1'" [price]="30000"/>
-    <app-product [img]="'https://picsum.photos/250/250'" [title]="'Producto 1'" [price]="30000"/>
-    <app-product [img]="'https://picsum.photos/250/250'" [title]="'Producto 1'" [price]="30000"/>
-    <app-product [img]="'https://picsum.photos/250/250'" [title]="'Producto 1'" [price]="30000"/>
-    <app-product [img]="'https://picsum.photos/250/250'" [title]="'Producto 1'" [price]="30000"/>
+<div class="flex space-x-4  mt-5">
+  <div class="w-56">
+    <ul>
+      <li>
+        <a routerLink="/" class="cursor-pointer">All</a>
+      </li>
+      @for (category of categories(); track category) {
+        <li>
+          <a routerLink="/" [queryParams]="{category_id: category.id}" class="cursor-pointer">{{ category.name
+          }}</a>
+        </li>
+      }
+    </ul>
+  </div>
+  <div class="grid grid-cols-4 gap-8 w-full">
+    @for (product of products(); track product) {
+      <app-product [product]="product" (addToCart)="addToCart($event)" />
+    }
+  </div>
+
 </div>

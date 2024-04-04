@@ -1,14 +1,23 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Product } from '@core/models/product.model';
+import { CommonModule, UpperCasePipe } from '@angular/common';
+import { TimeAgoPipe } from '@shared/pipes/time-ago.pipe';
+import { ReversePipe } from '@shared/pipes/reverse.pipe';
+import { RouterLinkWithHref } from '@angular/router';
 
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, TimeAgoPipe, ReversePipe, RouterLinkWithHref],
   templateUrl: './product.component.html',
-  styleUrl: './product.component.css'
+  // styleUrl: './product.component.css'
 })
+
 export class ProductComponent {
-  @Input({required:true}) img: string = "https://picsum.photos/250/250";
-  @Input({required:true}) title: string = "";
-  @Input({required:true}) price: number = 0;
+  @Input({ required: true }) product!: Product;
+  @Output() addToCart = new EventEmitter();
+
+  addToCartHandler() {
+    this.addToCart.emit(this.product);
+  }
 }
