@@ -1,21 +1,24 @@
-<div class="flex space-x-4  mt-5">
-  <div class="w-56">
+<app-banner />
+<div class="flex space-x-4 pl-10">
+  <div
+    class="w-56 w-180 min-h-dvh flex flex-col justify-between border-r border-[#DDCABC] py-12 px-0 pb-10 overflow-hidden font-sans">
     <ul>
       <li>
-        <a routerLink="/" class="cursor-pointer">All</a>
+        <a routerLink="/" class="cursor-pointer text-[#7e5233] font-bold">All</a>
       </li>
       @for (category of categories(); track category) {
-        <li>
-          <a routerLink="/" [queryParams]="{category_id: category.id}" class="cursor-pointer">{{ category.name
+      <li>
+        <a routerLink="/" [queryParams]="{category_id: category.id}" class="cursor-pointer text-[#7e5233] font-bold">{{
+          category.name
           }}</a>
-        </li>
+      </li>
       }
     </ul>
   </div>
-  <div class="grid grid-cols-4 gap-8 w-full">
+
+  <div class="grid grid-cols-4 gap-8 w-full mt-5 px-10">
     @for (product of products(); track product) {
-      <app-product [product]="product" (addToCart)="addToCart($event)" />
+    <app-product [product]="product" (addToCart)="addToCart($event)" />
     }
   </div>
-
 </div>

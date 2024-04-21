@@ -1,13 +1,50 @@
-<div class="group rounded-lg border">
-    <a [routerLink]="['/products', product.id]" class="w-full overflow-hidden rounded-t-lg bg-gray-200">
-        <img [src]="product.images[0]" [alt]="product.title"
-            class="h-full w-full object-cover object-center group-hover:opacity-75">
-    </a>
-    <div class="flex flex-col space-y-2 p-4">
-        <h3 class="text-sm text-gray-700">{{ product.title | uppercase}}</h3>
-        <p class="text-lg font-medium text-gray-900">{{product.price | currency:'$':'symbol':'1.2'}}</p>
-        <p class="text-lg font-medium text-gray-900">{{product.creationAt | timeAgo}}</p>
-        <button class="text-black bg-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 w-full"
-            (click)="addToCartHandler()">Add to cart</button>
+<div
+    class="card event-card grid grid-rows-[2fr,0.8fr,0.5fr] p-2   border-2 border-solid border-purple-300 border-opacity-50">
+    <div class="event-header relative h-180 max-h-[250px]  min-h-[250px]">
+        <a [routerLink]="['/products', product.id]" class="w-full overflow-hidden rounded-t-lg bg-gray-200">
+            <img [src]="product.images[0]" [alt]="product.title"
+                class="absolute inset-0 w-full h-full rounded border-2 border-gray-300 object-cover max-h-[310px]">
+        </a>
+        <p class="absolute right-4 bottom-4 text-xs text-white bg-opacity-60 bg-gray-700 py-1 px-2 rounded">
+            {{product.creationAt | timeAgo}}</p>
+        <div
+            class="absolute right-4 top-4 text-white bg-opacity-60 bg-gray-700 p-1 rounded-full shadow-md cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon h-8 w-8" viewBox="0 0 512 512">
+                <path d="M448 256c0-106-86-192-192-192S64 150 64 256s86 192 192 192 192-86 192-192z" fill="none"
+                    stroke="currentColor" stroke-miterlimit="10" stroke-width="32" />
+                <path
+                    d="M256 360a16 16 0 01-9-2.78c-39.3-26.68-56.32-45-65.7-56.41-20-24.37-29.58-49.4-29.3-76.5.31-31.06 25.22-56.33 55.53-56.33 20.4 0 35 10.63 44.1 20.41a6 6 0 008.72 0c9.11-9.78 23.7-20.41 44.1-20.41 30.31 0 55.22 25.27 55.53 56.33.28 27.1-9.31 52.13-29.3 76.5-9.38 11.44-26.4 29.73-65.7 56.41A16 16 0 01256 360z" />
+            </svg>
+        </div>
+    </div>
+    <div class="event-content grid grid-rows-[1fr,1fr] p-2 max-h-[100px]">
+        <h2 class="text-lg">{{ product.title | uppercase}}</h2>
+        <p class="text-sm opacity-80 ">Skyline Amphitheater</p>
+    </div>
+    <div class="event-footer flex items-center justify-between px-2">
+        <p class="text-xs font-semibold text-white bg-[#e48e2c] py-1 px-2 rounded">{{ product.category.name |
+            uppercase}}</p>
+        <div class="flex items-center">
+            <button (click)="addToCartHandler()"
+                class="bg-blue-500 text-white py-1 px-3 rounded border border-blue-500 font-semibold transition duration-300 ease-in-out hover:bg-transparent hover:text-blue-500 h-full">
+                Add to cart
+            </button>
+            <div class="share relative  m-1">
+                <button
+                    class="share-btn w-9 h-8 bg-blue-500 text-white px-2 border-2 border-blue-500 rounded font-medium text-sm transition duration-400 ease-in-out cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
+                        <circle cx="128" cy="256" r="48" fill="none" stroke="currentColor" stroke-linecap="round"
+                            stroke-linejoin="round" stroke-width="32" />
+                        <circle cx="384" cy="112" r="48" fill="none" stroke="currentColor" stroke-linecap="round"
+                            stroke-linejoin="round" stroke-width="32" />
+                        <circle cx="384" cy="400" r="48" fill="none" stroke="currentColor" stroke-linecap="round"
+                            stroke-linejoin="round" stroke-width="32" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="32" d="M169.83 279.53l172.34 96.94M342.17 135.53l-172.34 96.94" />
+                    </svg>
+                </button>
+            </div>
+
+        </div>
     </div>
 </div>

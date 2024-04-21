@@ -8,12 +8,13 @@ import { ProductService } from '@shared/services/product.service';
 import { CategoryService } from '@shared/services/category.service';
 import { Category } from '@core/models/category.model';
 import { RouterLinkWithHref } from '@angular/router';
+import { BannerComponent } from "../../../../shared/components/banner/banner.component";
 
 @Component({
   selector: 'app-list',
   standalone: true,
   templateUrl: './list.component.html',
-  imports: [ProductComponent, HeaderComponent, RouterLinkWithHref]
+  imports: [ProductComponent, HeaderComponent, RouterLinkWithHref, BannerComponent]
 })
 export default class ListComponent {
   private cart = inject(CartService);
@@ -32,7 +33,7 @@ export default class ListComponent {
   ngOnChanges(changes: SimpleChanges) {
     // const category_id = changes['category_id'];
     // if (category_id) {
-      this.getProducts();
+    this.getProducts();
     // }
   }
 
@@ -44,6 +45,7 @@ export default class ListComponent {
     this.productService.getProducts(this.category_id)
       .subscribe({
         next: (products) => {
+          console.log(products)
           this.products.set(products);
         },
         error: () => {
@@ -55,6 +57,7 @@ export default class ListComponent {
     this.categoryService.getAllCategories()
       .subscribe({
         next: (data) => {
+          console.log(data)
           this.categories.set(data);
         },
         error: () => {

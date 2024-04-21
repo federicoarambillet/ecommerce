@@ -3,14 +3,16 @@ import { Component, Input, SimpleChanges, inject, signal } from '@angular/core';
 import { RouterLinkActive, RouterLinkWithHref } from '@angular/router';
 import { Product } from '@core/models/product.model';
 import { CartService } from '@shared/services/cart.service';
+import { BannerComponent } from "../banner/banner.component";
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, RouterLinkWithHref, RouterLinkActive],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrl: './header.component.css',
+  imports: [CommonModule, RouterLinkWithHref, RouterLinkActive, BannerComponent]
 })
+
 export class HeaderComponent {
   private cartService = inject(CartService);
 
