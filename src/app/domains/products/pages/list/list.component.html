@@ -1,7 +1,8 @@
 <app-banner />
 <div class="flex space-x-4 pl-10">
+
   <div
-    class="w-56 w-180 min-h-dvh flex flex-col justify-between border-r border-[#DDCABC] py-12 px-0 pb-10 overflow-hidden font-sans">
+    class="w-56 w-180 min-h-dvh hidden md:flex  flex-col justify-between border-r border-[#DDCABC] py-12 px-0 pb-10 overflow-hidden font-sans">
     <ul>
       <li>
         <a routerLink="/" class="cursor-pointer text-[#7e5233] font-bold">All</a>
@@ -16,9 +17,10 @@
     </ul>
   </div>
 
-  <div class="grid grid-cols-4 gap-8 w-full mt-5 px-10">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 w-full mt-5 px-10">
     @for (product of products(); track product) {
     <app-product [product]="product" (addToCart)="addToCart($event)" />
     }
   </div>
+
 </div>
